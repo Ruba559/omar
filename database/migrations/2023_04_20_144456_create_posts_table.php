@@ -16,10 +16,10 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->string('title');
-            $table->string('description');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->double('price');
+            $table->double('commission');
+            $table->dateTime('startAt');
+            $table->dateTime('endAt');
             $table->timestamps();
         });
     }

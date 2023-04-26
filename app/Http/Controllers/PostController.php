@@ -13,10 +13,20 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::where('start_time', '<=', Carbon::now()->format('Y-m-d H:i:s'))
-        ->where('end_time', '>=', Carbon::now()->format('Y-m-d H:i:s'))->get();
+        $posts = Post::where('startAt', '<=', Carbon::now()->format('Y-m-d H:i:s'))
+        ->where('endAt', '>=', Carbon::now()->format('Y-m-d H:i:s'))->get();
 
         return response($posts, 200);
+     
+    }
+
+
+    public function postById($id)
+    {
+
+        $post = Post::where('id' , $id)->first();
+
+        return response($post, 200);
      
     }
 
@@ -36,10 +46,10 @@ class PostController extends Controller
        }
         $post = Post::create([
             'image' => $path,
-            'title' => $request->title,
-            'description' => $request->description,
-            'start_time' =>  $request->start_time,
-            'end_time' => $request->end_time,
+            'price' => $request->price,
+            'startAt' => $request->startAt,
+            'endAt' =>  $request->endAt,
+            'commission' => $request->commission,
             
         ]);
  
